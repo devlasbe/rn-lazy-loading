@@ -2,6 +2,9 @@ import React, { useCallback } from 'react';
 import { RenderPassReport, PerformanceProfiler } from '@shopify/react-native-performance';
 import { PerformanceProvider, usePerformance } from './src/contexts/PerformanceContext';
 import RootNavigation from './src/navigation/RootNavigation';
+import { LogBox } from 'react-native';
+
+LogBox.ignoreAllLogs();
 
 function AppContent() {
   const { addReport } = usePerformance();
@@ -18,7 +21,7 @@ function AppContent() {
   );
 
   return (
-    <PerformanceProfiler onReportPrepared={onReportPrepared} useRenderTimeouts>
+    <PerformanceProfiler onReportPrepared={onReportPrepared}>
       <RootNavigation />
     </PerformanceProfiler>
   );

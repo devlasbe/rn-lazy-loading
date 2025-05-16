@@ -2,7 +2,10 @@ import { StackNavigationProp, createStackNavigator } from '@react-navigation/sta
 import Home from '../pages/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
+import { PerformanceMeasureView } from '@shopify/react-native-performance';
 import NestedNavigation from './NestedNavigation';
+
+// const NestedNavigation = React.lazy(() => import('./NestedNavigation'));
 
 type RootStackParamList = {
   Home: undefined;
@@ -13,11 +16,19 @@ export type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, '
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
+const PerformanceHomeScreen = () => {
+  return (
+    <PerformanceMeasureView screenName="Home" interactive={true}>
+      <Home />
+    </PerformanceMeasureView>
+  );
+};
+
 const RootNavigation = () => {
   return (
     <NavigationContainer>
       <RootStack.Navigator>
-        <RootStack.Screen name="Home" component={Home} />
+        <RootStack.Screen name="Home" component={PerformanceHomeScreen} />
         <RootStack.Screen name="Nested" component={NestedNavigation} />
       </RootStack.Navigator>
     </NavigationContainer>
