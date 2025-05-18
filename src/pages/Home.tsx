@@ -11,9 +11,9 @@ export default function Home() {
   const renderTime = reports?.timeToRenderMillis;
   return (
     <View>
-      <Text>Lazy Home</Text>
-      <Text>JS Boot Time: {jsBootTime}</Text>
-      <Text>Render Time: {renderTime}</Text>
+      <Text style={{ fontSize: 30, fontWeight: '500' }}>lazy Home</Text>
+      <Text style={{ fontSize: 30, fontWeight: '500' }}>JS Boot Time: {jsBootTime}</Text>
+      <Text style={{ fontSize: 30, fontWeight: '500' }}>Render Time: {renderTime}</Text>
     </View>
   );
 }
